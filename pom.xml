@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>nokia release repo</name>
-	      <url>http://13.234.115.64:9790/repository/nokia-release/</url>
+	      <url>http://65.0.103.244:8081/repository/dgs-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>nokia snapshot repo </name>
-	      <url>http://13.234.115.64:9790/repository/nokia-snapshot/</url>
+	      <url>http://65.0.103.244:8081/repository/dgs-snapshot//</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
