@@ -7,9 +7,11 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 stage ('checkout'){
 git branch: 'development', credentialsId: 'bc743430-88f5-431b-916a-cba8df4e996a', url: 'https://github.com/devopstraining-prjct/maven-web-application.git'
 }
+/*
 stage ('Build'){
 sh "${mavenHome}/bin/mvn clean package"
 }
+*/
 stage ('executesonarqubereport'){
 sh "${mavenHome}/bin/mvn sonar:sonar"
 }
