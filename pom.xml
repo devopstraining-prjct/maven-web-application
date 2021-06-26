@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>nokia release repo</name>
-	      <url>http://13.233.143.22:8081/repository/dell-release/</url>
+	      <url>http://13.233.143.22:8081/repository/dgs-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>nokia snapshot repo </name>
-	      <url>http://13.233.143.22:8081/repository/dell-snapshot/</url>
+	      <url>http://13.233.143.22:8081/repository/dgs-snapshot//</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
