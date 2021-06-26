@@ -1,0 +1,51 @@
+pipeline{
+agent any
+tools{
+maven "maven 3.8.1"
+}
+stages{
+ stage('checkout'){
+ steps{
+ git branch: 'development', credentialsId: 'bc743430-88f5-431b-916a-cba8df4e996a', url: 'https://github.com/devopstraining-prjct/maven-web-application.git'
+ }
+ }
+ stage('Build'){
+ steps{
+ sh "mvn clean package"
+ }
+ }
+ stage('Executesonarreport'){
+ steps{
+ sh "mvn sonar:sonar"
+ }
+ }
+ stage('Uploadintonexus'){
+ steps{
+ sh "mvn clean deploy"
+ }
+ }
+ stage('DeployTomcat'){
+ steps{
+ sshagent(['202d2a7f-a0b8-4461-a731-39174effeadc']) {
+ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.99.255:/opt/apache-tomcat-9.0.48/webapps/"
+ }
+ }
+ }
+}
+post{
+    
+ success{
+ emailext body: '''Build is over-success!!!
+
+ Regards,
+ Madhav.k''', subject: 'Build is over-success!!!', to: 'madhavchinna287@gmail.com'
+ }
+ failure{
+ emailext body: '''Build is over-failed!!!
+
+ Regards,
+ Madhav.k''', subject: 'Build is over-failed!!!', to: 'madhavchinna287@gmail.com'
+ }
+}
+
+}
