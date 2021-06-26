@@ -1,5 +1,8 @@
 pipeline{
-agent any
+//agent any
+agent {
+label 'nodel'
+}
 tools{
 maven "maven 3.8.1"
 }
@@ -27,7 +30,7 @@ stages{
  stage('DeployTomcat'){
  steps{
  sshagent(['202d2a7f-a0b8-4461-a731-39174effeadc']) {
- sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.99.255:/opt/apache-tomcat-9.0.48/webapps/"
+ sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.237.227:/opt/apache-tomcat-9.0.48/webapps/"
  }
  }
  }
